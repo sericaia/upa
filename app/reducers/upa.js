@@ -23,8 +23,8 @@ function decreaseTimer(state, action) {
     return state;
   }
 
-  return state.update(action.id, function(v) {
-    return {id: v.id, title: v.title, duration: v.duration - 1 };
+  return state.update(action.id, function(item) {
+    return Object.assign({}, item, {duration: item.duration - 1});
   });
 }
 
