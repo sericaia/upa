@@ -1,48 +1,35 @@
 'use strict';
 
 import * as types from '../actions/actionTypes';
+import { List } from 'immutable';
 
-const initialState = {
-  tasks: [
+const initialState = new List([
     {id: 0, title: 'Take Shower', duration: 15},
     {id: 1, title: 'Pick Coffe and Sandwich', duration: 10},
-    {id: 1, title: 'Brushing teeth', duration: 10}
-  ]
-};
+    {id: 1, title: 'Brushing teeth', duration: 10}]);
 
 function addTask(state, action) {
   var task = {
-    id: state.tasks.length,
+    id: state.size,
     title: action.task.title,
-    duration: action.task.duration
+    duration: parseInt(action.task.duration)
   };
 
-  state.tasks.push(task);
-
-  return {
-    ...state
-  }
+  return state.insert(state.size, task);
 }
 
 function decreaseTimer(state, action) {
-  if(typeof action.id === 'undefined') return { ...state };
-
-  var filtered = state.tasks.filter(function(item) {
-    return item.id === action.id
-  });
-
-  if(!filtered) return { ...state };
-
-  filtered[0].duration = filtered[0].duration - 1;
-  return {
-    ...state
+  if(typeof action.id === 'undefined') {
+    return state;
   }
+
+  return state.update(action.id, function(v) {
+    return {id: v.id, title: v.title, duration: v.duration - 1 };
+  });
 }
 
 function showRecords(state, action) {
-  return {
-    ...state
-  }
+  return state;
 }
 
 export default function upa(state = initialState, action = {}) {

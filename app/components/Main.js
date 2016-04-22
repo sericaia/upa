@@ -19,7 +19,7 @@ export default class Main extends Component {
     const { state, actions } = this.props;
     return (
       <TaskList
-        value={state.tasks}
+        value={state}
         {...actions}
         navigator={this.props.navigator} />
     );
@@ -27,7 +27,7 @@ export default class Main extends Component {
 }
 
 export default connect(state => ({
-    state: state.upa
+    state: state.upa.toArray()
   }),
   (dispatch) => ({
     actions: bindActionCreators(upaActions, dispatch)
