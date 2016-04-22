@@ -43,19 +43,23 @@ const styles = StyleSheet.create({
 export default class TaskList extends Component {
   constructor(props) {
     super(props);
-    // var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-
-    var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 
     this.state = {
-      dataSource: ds.cloneWithRows(this.props.value)
+      dataSource: this.ds.cloneWithRows(this.props.value)
     };
+  }
 
+  componentWillReceiveProps(nextProps) {
+
+    this.setState({
+      dataSource: this.ds.cloneWithRows(nextProps.value)
+    });
   }
 
   renderTask(value) {
     return (
-      <View style={styles.listItem}>
+      <View style={styles.listItem} key={value.id}>
         <Text style={styles.listItemTitle}>{value.title}</Text>
         <Text style={styles.listItemDuration}>{value.duration} minutes</Text>
       </View>

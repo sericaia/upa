@@ -15,11 +15,6 @@ export default class Main extends Component {
     super(props);
   }
 
-  shouldComponentUpdate() {
-    debugger;
-    return true;
-  }
-
   render() {
     const { state, actions } = this.props;
     return (
