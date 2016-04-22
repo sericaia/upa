@@ -1,0 +1,28 @@
+{
+  "name": "upa",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start"
+  },
+  "dependencies": {
+    "immutable": "^3.8.1",
+    "react-native": "^0.23.1",
+    "react-redux": "4.4.0",
+    "redux": "3.3.1",
+    "redux-thunk": "1.0.3"
+  },
+  "description": "Weak up smoothly",
+  "main": "index.ios.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sericaia/upa.git"
+  },
+  "author": "Daniela Borges <alunassertiva@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sericaia/upa/issues"
+  },
+  "homepage": "https://github.com/sericaia/upa"
+}
